@@ -20,8 +20,8 @@ public class Main {
         Grid battlefield2 = new Grid(10);
 
         Ship ship1 = new Ship("Battleship","B",5);
-        Ship ship2 = new Ship("Destroyer","D",4);
-        Ship ship3 = new Ship("Destroyer","D",4);
+        Ship ship2 = new Ship("Destroyer","D",1);
+        Ship ship3 = new Ship("Destroyer","D",1);
 
         ArrayList<Ship> ships = new ArrayList<>(Arrays.asList(ship1,ship2,ship3));
         ArrayList<Ship> ships2 = new ArrayList<>(Arrays.asList(new Ship(ship1),new Ship(ship2),new Ship(ship3)));
@@ -92,7 +92,8 @@ public class Main {
 
             ArrayList<Point> pointsToShoot = new ArrayList<>();
             if(AdvancedMode){
-                for (int i = 0; i < battlefield.getShips().size(); i++) {
+                for (int i = 0; i < battlefield.getShips().stream().filter(Ship::isAlive).count(); i++) {
+
                     System.out.println("Shot number " + (i+1) +":");
                     pointsToShoot.add(takeShoot(battlefield.getSize()));
                 }
