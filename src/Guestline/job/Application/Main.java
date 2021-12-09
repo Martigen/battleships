@@ -20,8 +20,8 @@ public class Main {
         Grid battlefield2 = new Grid(10);
 
         Ship ship1 = new Ship("Battleship","B",5);
-        Ship ship2 = new Ship("Destroyer","D",1);
-        Ship ship3 = new Ship("Destroyer","D",1);
+        Ship ship2 = new Ship("Destroyer","D",4);
+        Ship ship3 = new Ship("Destroyer","D",4);
 
         ArrayList<Ship> ships = new ArrayList<>(Arrays.asList(ship1,ship2,ship3));
         ArrayList<Ship> ships2 = new ArrayList<>(Arrays.asList(new Ship(ship1),new Ship(ship2),new Ship(ship3)));
@@ -41,8 +41,8 @@ public class Main {
 
     public static void settings() {
 
-        displayShipsLife = getSetting("Enemy ships life visible (T=True, F=False): ");
         displayEnemyShips = getSetting("Enemy ships visible, CHEATS! (T=True, F=False): ");
+        displayShipsLife = getSetting("Enemy ships life visible (T=True, F=False): ");
         // number of shoots equals to available ships
         AdvancedMode = getSetting("Advanced Mode? (T=True, F=False): ");
 
