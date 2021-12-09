@@ -42,7 +42,7 @@ public class Main {
     public static void settings() {
 
         displayShipsLife = getSetting("Enemy ships life visible (T=True, F=False): ");
-        displayEnemyShips = getSetting("Enemy ships visible (T=True, F=False): ");
+        displayEnemyShips = getSetting("Enemy ships visible, CHEATS! (T=True, F=False): ");
         // number of shoots equals to available ships
         AdvancedMode = getSetting("Advanced Mode? (T=True, F=False): ");
 
@@ -109,7 +109,7 @@ public class Main {
                 }
             }
             if(AdvancedMode){
-                for (int i = 0; i < battlefield.getShips().size(); i++) {
+                for (int i = 0; i < battlefield2.getShips().stream().filter(Ship::isAlive).count(); i++) {
                     npc.takeAction();
                 }
             } else {
@@ -118,10 +118,16 @@ public class Main {
 
         }
 
-        if(battlefield.getShips().stream().anyMatch(Ship::isAlive))
+        printBattlefield(battlefield2,displayEnemyShips,displayShipsLife);
+        printBattlefield(battlefield,true,true);
+
+        if(battlefield.getShips().stream().anyMatch(Ship::isAlive)){
             System.out.println("WIN!!");
-        else
+        }
+        else {
             System.out.println("LOSE");
+        }
+
     }
 
     private static Point takeShoot(int bfSize){
